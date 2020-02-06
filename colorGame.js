@@ -27,10 +27,21 @@ for(var i = 0; i < squares.length; i++){
         var clickedColor = this.style.backgroundColor;
         //compare color to picked color
         if(clickedColor === pickedColor){
-            alert("correct");
+            messageDisplay.textContent = "correct";
+            //changes colors of others suares to that of the correctly clicked square
+            changeColors(clickedColor);
         } else {
+            //wrongly clicked square disappears
             this.style.backgroundColor = "#232323";
             messageDisplay.textContent = "Try Again!";
         }
     });
+}
+ //function to change color of other squares to match correctly clicked square
+function changeColors(color){
+    //loop through all squares
+    for(var i = 0; i < squares.length; i++){
+        //change each color to match given color
+        squares[i].style.backgroundColor = color;
+    }
 }
