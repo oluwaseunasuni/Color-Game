@@ -1,15 +1,12 @@
-var colors = generateRandomColors();
-
-
-//loops through all squares and assigns a color to each
-//updates H1 with required color to be guessed
+var colors = generateRandomColors(6);
 var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 
 colorDisplay.textContent = pickedColor;
-
+//loops through all squares and assigns a color to each
+//updates H1 with required color to be guessed
 for(var i = 0; i < squares.length; i++){
     //adds initial colors to squares
     squares[i].style.backgroundColor = colors[i];
@@ -48,10 +45,10 @@ function pickColor(){
 function generateRandomColors(num){
     //make an array
     var arr = []
-    //add num random colors to array
+    //repeat num times
     for(var i = 0; i < num; i++){
         //get random color and push into array
-
+        arr.push(randomColor())
     }
     //return that array
     return arr;
@@ -64,5 +61,5 @@ function randomColor(){
     var g = Math.floor(Math.random() * 256);
     //pick a "blue" from 0 - 255
     var b = Math.floor(Math.random() * 256);
-   return "rgb(" + r + "," + g + "," + b + ")";
+    return "rgb(" + r + ", " + g + ", " + b + ")";
 }
