@@ -7,8 +7,13 @@ var colors = [
     "rgb(255, 0, 255)"
 ]
 
-//assigns colors to the squares
+
+//loops through all squares and assigns a color to each
 var squares = document.querySelectorAll(".square");
+var pickedColor = colors[3];
+var colorDisplay = document.getElementById("colorDisplay");
+
+colorDisplay.textContent = pickedColor;
 
 for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
