@@ -17,28 +17,28 @@ resetButton.addEventListener("click", function(){
     for (var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
     }
+    h1.style.backgroundColor = "#232323";
 })
-
 
 colorDisplay.textContent = pickedColor;
 //loops through all squares and assigns a color to each
 for(var i = 0; i < squares.length; i++){
     //adds initial colors to squares
     squares[i].style.backgroundColor = colors[i];
-
     //add event listeners to squares
     squares[i].addEventListener("click", function(){
         //picks color of clicked square
         var clickedColor = this.style.backgroundColor;
-        //compare color to picked color
+        //logic to be executed when correct square is picked
         if(clickedColor === pickedColor){
-            messageDisplay.textContent = "correct";
+            messageDisplay.textContent = "correct"; 
+            resetButton.textContent = "Play Again?"
             //changes colors of others squares to that of the correctly clicked square
             changeColors(clickedColor);
             //updates h1 with required color to be guessed
             h1.style.backgroundColor = clickedColor;
         } else {
-            //wrongly clicked square disappears
+            //executed logic for wrong answers
             this.style.backgroundColor = "#232323";
             messageDisplay.textContent = "Try Again!";
         }
