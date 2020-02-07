@@ -4,23 +4,38 @@ var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
+var resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", function(){
+    //generate all new colors
+    colors = generateRandomColors(6);
+    //pick a new random color from array
+    pickedColor = pickColor();
+    //change colorDisplay to match picked
+    colorDisplay.textContent = pickedColor;
+    //change colors of squares
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i];
+    }
+})
+
 
 colorDisplay.textContent = pickedColor;
 //loops through all squares and assigns a color to each
-//updates H1 with required color to be guessed
 for(var i = 0; i < squares.length; i++){
     //adds initial colors to squares
     squares[i].style.backgroundColor = colors[i];
 
-    //add click listeners to squares
+    //add event listeners to squares
     squares[i].addEventListener("click", function(){
         //picks color of clicked square
         var clickedColor = this.style.backgroundColor;
         //compare color to picked color
         if(clickedColor === pickedColor){
             messageDisplay.textContent = "correct";
-            //changes colors of others suares to that of the correctly clicked square
+            //changes colors of others squares to that of the correctly clicked square
             changeColors(clickedColor);
+            //updates h1 with required color to be guessed
             h1.style.backgroundColor = clickedColor;
         } else {
             //wrongly clicked square disappears
