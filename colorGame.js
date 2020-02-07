@@ -31,6 +31,17 @@ easyButton.addEventListener("click", function(){
 hardButton.addEventListener("click", function(){
     hardButton.classList.add("selected");
     easyButton.classList.remove("selected");
+    //generate three colors at random
+    colors = generateRandomColors(6);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    //loops through the 6 squares
+    for (var i = 0; i < squares.length; i++) {
+            //assigns color to the first three squares
+            squares[i].style.backgroundColor = colors[i];
+            //displays all six squares
+            squares[i].style.display = "block";
+    }
 })
 
 resetButton.addEventListener("click", function(){
