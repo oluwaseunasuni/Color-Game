@@ -12,6 +12,20 @@ var hardButton = document.querySelector("#hardButton");
 easyButton.addEventListener("click", function(){
     hardButton.classList.remove("selected");
     easyButton.classList.add("selected");
+    //generate three colors at random
+    colors = generateRandomColors(3);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    //loops through the 6 squares
+    for(var i = 0; i < squares.length; i++){
+        if(colors[i]){
+            //assigns color to the first three squares
+            squares[i].style.backgroundColor = colors[i];
+        //hides the bottom 3 squares
+        } else {
+            squares[i].style.display = "none";
+        }
+    }
 })
 //hard button engaged
 hardButton.addEventListener("click", function(){
