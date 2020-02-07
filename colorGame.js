@@ -5,6 +5,19 @@ var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
+var easyButton = document.querySelector("#easyButton");
+var hardButton = document.querySelector("#hardButton");
+
+//easy button engaged
+easyButton.addEventListener("click", function(){
+    hardButton.classList.remove("selected");
+    easyButton.classList.add("selected");
+})
+//hard button engaged
+hardButton.addEventListener("click", function(){
+    hardButton.classList.add("selected");
+    easyButton.classList.remove("selected");
+})
 
 resetButton.addEventListener("click", function(){
     //generate all new colors
