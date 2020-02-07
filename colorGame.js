@@ -3,6 +3,7 @@ var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
+var h1 = document.querySelector("h1");
 
 colorDisplay.textContent = pickedColor;
 //loops through all squares and assigns a color to each
@@ -20,6 +21,7 @@ for(var i = 0; i < squares.length; i++){
             messageDisplay.textContent = "correct";
             //changes colors of others suares to that of the correctly clicked square
             changeColors(clickedColor);
+            h1.style.backgroundColor = clickedColor;
         } else {
             //wrongly clicked square disappears
             this.style.backgroundColor = "#232323";
@@ -53,7 +55,7 @@ function generateRandomColors(num){
     //return that array
     return arr;
 }
-
+//generates random colors
 function randomColor(){
     //pick a "red" from 0 - 255
    var r = Math.floor(Math.random() * 256);
