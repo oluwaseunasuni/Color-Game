@@ -1,21 +1,52 @@
 var numSquares = 6;
-var colors = generateRandomColors(numSquares);
+var colors = [];
+var pickedColor;
 var squares = document.querySelectorAll(".square");
-var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
 
-for(var i = 0; i < modeButtons.length; i++) {
-    modeButtons[i].addEventListener("click", function(){
-        modeButtons[0].classList.remove("selected");
-        modeButtons[1].classList.remove("selected");
-        this.classList.add("selected");
-        this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
-        reset();
-    });
+init ();
+//mode buttons event listeners for game difficulty
+function init(){
+    for (var i = 0; i < modeButtons.length; i++) {
+        modeButtons[i].addEventListener("click", function () {
+            modeButtons[0].classList.remove("selected");
+            modeButtons[1].classList.remove("selected");
+            this.classList.add("selected");
+            this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+            reset();
+        });
+    }
+
+    //loops through all squares and assigns a color to each
+    //square listeners
+    for (var i = 0; i < squares.length; i++) {
+        //adds initial colors to squares
+        squares[i].addEventListener("click", function(){
+            //picks color of clicked square
+            var clickedColor = this.style.backgroundColor;
+            //logic to be executed when correct square is picked
+            if (clickedColor === pickedColor) {
+                messageDisplay.textContent = "correct";
+                resetButton.textContent = "Play Again?"
+                //changes colors of others squares to that of the correctly clicked square
+                changeColors(clickedColor);
+                //updates h1 with required color to be guessed
+                h1.style.backgroundColor = clickedColor;
+            } else {
+                //executed logic for wrong answers
+                this.style.backgroundColor = "#232323";
+                messageDisplay.textContent = "Try Again!";
+            }
+        });
+    }
+
+    //picks randon colors
+    reset();
+
 }
 
 function reset(){
@@ -45,7 +76,6 @@ resetButton.addEventListener("click", function(){
     reset();
 })
 
-colorDisplay.textContent = pickedColor;
 //loops through all squares and assigns a color to each
 for(var i = 0; i < squares.length; i++){
     //adds initial colors to squares
