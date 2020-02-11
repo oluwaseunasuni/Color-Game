@@ -9,8 +9,15 @@ var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
 
 init ();
-//mode buttons event listeners for game difficulty
+
 function init(){
+    setupModeButtons();
+    setupSquares();
+    reset();
+}
+
+//mode buttons event listeners for game difficulty
+function setupModeButtons() {
     for (var i = 0; i < modeButtons.length; i++) {
         modeButtons[i].addEventListener("click", function () {
             modeButtons[0].classList.remove("selected");
@@ -20,12 +27,14 @@ function init(){
             reset();
         });
     }
+}
 
-    //loops through all squares and assigns a color to each
+//loops through all squares and assigns a color to each
+function setupSquares(){
     //square listeners
     for (var i = 0; i < squares.length; i++) {
         //adds initial colors to squares
-        squares[i].addEventListener("click", function(){
+        squares[i].addEventListener("click", function () {
             //picks color of clicked square
             var clickedColor = this.style.backgroundColor;
             //logic to be executed when correct square is picked
@@ -43,10 +52,6 @@ function init(){
             }
         });
     }
-
-    //picks randon colors
-    reset();
-
 }
 
 function reset(){
