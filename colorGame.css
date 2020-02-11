@@ -24,16 +24,12 @@ body {
 h1 {
     text-align: center;
     line-height: 1.1;
-    color:white;
+    font-weight: normal;
+    color: white;
     background: steelblue;
     margin: 0;
-    font-weight: normal;
     text-transform: uppercase;
     padding: 20px 0;
-}
-
-span {
-    color: white;
 }
 
 #colorDisplay {
@@ -48,19 +44,20 @@ span {
 #stripe {
     background: white;
     height: 30px;
-    text-align:center;
+    text-align: center;
     color: black;
 }
 
 .selected {
-    background: blue;
+    color: white;
+    background: steelblue;
 }
 
 button {
     border: none;
     background: none;
     text-transform: uppercase;
-    height: 100px;
+    height: 100%;
     font-weight: 700;
     color: steelblue;
     letter-spacing: 1px;
