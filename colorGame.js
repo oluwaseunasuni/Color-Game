@@ -104,7 +104,8 @@ for(var i = 0; i < squares.length; i++){
         }
     });
 }
- //function to change color of other squares to match correctly clicked square
+
+//function to change color of other squares to match correctly clicked square
 function changeColors(color){
     //loop through all squares
     for(var i = 0; i < squares.length; i++){
@@ -130,6 +131,7 @@ function generateRandomColors(num){
     //return that array
     return arr;
 }
+
 //generates random colors
 function randomColor(){
     //pick a "red" from 0 - 255
